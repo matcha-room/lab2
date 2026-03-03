@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.fade {
+     width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 9999;
+    pointer-events: none;
+    animation: fadeOutBlack 2s ease-out;
+    animation-delay: .05s;
+    opacity: 0;
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: monospace;
+}
+
+.letterGrower {
+    display: inline-block;
+    transition: transform 0.1s ease-in-out;
+}
+
+.letterGrower:hover {
+    cursor: default;
+    transform: scale(1.5);
+}
+
+h1 {
+    font-size: 8rem;
+    text-align: center;
+    user-select: none;
+    animation: booIn 1s ease-out;
+}
+
+p {
+    text-align: center;
+    color: grey;
+    mask-image: linear-gradient(90deg, transparent 0%, white 100%);
+    mask-position: 0 0;
+    animation: wipe-reveal 1s linear forwards;
+    animation-delay: 5s;
+}
+
+@keyframes wipe-reveal {
+    from {
+        mask-position: -100% 0;
+    }
+    to {
+        mask-position: 0% 0;
+    }
+}
+
+@keyframes booIn {
+    from {
+        transform: translateY(-300%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOutBlack {
+    from {
+        opacity: 1; 
+        visibility: visible;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
