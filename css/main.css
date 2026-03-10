@@ -1,83 +1,104 @@
 * {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
-html, body {
-    height: 100%;
-    width: 100%;
+body {
+	background-color: white;
 }
 
 .fade {
-     width: 100%;
-    height: 100%;
-    background-color: black;
-    z-index: 9999;
-    pointer-events: none;
-    animation: fadeOutBlack 2s ease-out;
-    animation-delay: .05s;
-    opacity: 0;
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background-color: black;
+	z-index: 9999;
+	pointer-events: none;
+	animation: fadeOutBlack 2s ease-out;
+	opacity: 0;
 }
 
 .content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: monospace;
+	background-color: rgb(254, 203, 211);
+	width: 100vw;
+	height: 100vh;
+	font-family: monospace;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.content:active {
+	animation: goAway 0.25s ease-out forwards;
 }
 
 .letterGrower {
-    display: inline-block;
-    transition: transform 0.1s ease-in-out;
+	display: inline-block;
+	transition: transform 0.1s ease-in-out;
+	text-shadow: 5px 1px 0px rgba(0, 0, 0, 0.5);
 }
 
 .letterGrower:hover {
-    cursor: default;
-    transform: scale(1.5);
+	cursor: default;
+	transform: scale(1.5);
 }
 
-h1 {
-    font-size: 8rem;
-    text-align: center;
-    user-select: none;
-    animation: booIn 1s ease-out;
+.boo {
+	font-size: 8rem;
+	text-align: center;
+	user-select: none;
+	animation: booIn 1s ease-out;
 }
 
 p {
-    text-align: center;
-    color: grey;
-    mask-image: linear-gradient(90deg, transparent 0%, white 100%);
-    mask-position: 0 0;
-    animation: wipe-reveal 1s linear forwards;
-    animation-delay: 5s;
+	text-align: center;
+	color: grey;
+	cursor: pointer;
 }
 
-@keyframes wipe-reveal {
-    from {
-        mask-position: -100% 0;
-    }
-    to {
-        mask-position: 0% 0;
-    }
+@keyframes goAway {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(100%);
+	}
 }
 
 @keyframes booIn {
-    from {
-        transform: translateY(-300%);
-    }
-    to {
-        transform: translateY(0);
-    }
+	0% {
+		transform: translateY(-500%);
+	}
+	20% {
+		transform: translateY(-500%);
+	}
+	100% {
+		transform: translateY(0);
+	}
 }
 
 @keyframes fadeOutBlack {
-    from {
-        opacity: 1; 
-        visibility: visible;
-    }
-    to {
-        opacity: 0;
-        visibility: hidden;
-    }
+	0% {
+		opacity: 1;
+		visibility: visible;
+	}
+	15% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
+figure {
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: -100;
 }
